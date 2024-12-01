@@ -1,10 +1,10 @@
 use std::fs::File;
-use std::io::{self, BufRead, BufReader};
+use std::io::{BufRead, BufReader};
 use std::iter::zip;
 use std::vec;
 
-fn main() -> io::Result<()> {
-    let file = File::open("input.txt")?;
+fn main() {
+    let file = File::open("input.txt").unwrap();
     let reader = BufReader::new(file);
 
     let mut list1 = vec![];
@@ -21,5 +21,4 @@ fn main() -> io::Result<()> {
     list2.sort();
 
     println!("{}", zip(list1, list2).fold(0, |acc, (a, b)| acc +  (a - b).abs()));
-    Ok(())
 } 
